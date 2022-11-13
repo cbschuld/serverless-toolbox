@@ -1,0 +1,57 @@
+{
+  "name": "serverless-toolbox",
+  "version": "1.0.0",
+  "description": "Serverless Toolbox - a collection of functionality for building serverless solutions on AWS using the v3 SDK",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "types": "lib/esm/index.d.ts",
+  "files": [
+    "lib/**/*"
+  ],
+  "scripts": {
+    "test": "jest --config jestconfig.json",
+    "build": "npm run tsc",
+    "tsc": "tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "eslint --ext .js,.ts .",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cbschuld/serverless-toolbox.git"
+  },
+  "keywords": [
+    "serverless",
+    "aws",
+    "typescript",
+    "lambda"
+  ],
+  "author": "Chris Schuld <cbschuld@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cbschuld/serverless-toolbox/issues"
+  },
+  "homepage": "https://github.com/cbschuld/serverless-toolbox#readme",
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.108",
+    "@types/jest": "^29.2.2",
+    "@types/node": "^18.11.9",
+    "@typescript-eslint/eslint-plugin": "^5.42.1",
+    "aws-lambda": "^1.0.7",
+    "eslint": "^8.27.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-node": "^11.1.0",
+    "jest": "^29.3.1",
+    "prettier": "^2.7.1",
+    "ts-jest": "^29.0.3",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "@aws-sdk/client-ssm": "^3.205.0"
+  }
+}
